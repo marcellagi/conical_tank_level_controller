@@ -22,7 +22,7 @@ float height;         // altura da agua
 float setpoint;       // altura para a agua se manter
 
 float error = 0.0, sum_error = 0.0;    //erro e somatorio do erro usado nas constantes de controle
-float kp = 1.7, ki = 0.1;              //constantes de controle
+float kp = 12.0, ki = 0.3;              //constantes de controle
 
 float dt = 0.1;             //delay
 
@@ -50,10 +50,10 @@ float readUltrasonicDistance()     //calculo da distancia medida pelo sensor
 
 float controlMotor(float PI_value)          //controle da bomba
 {
-  pwm_value = PI_value;
 
-  if(PI_value < 50) pwm_value = 0;
-  else if(PI_value > 255) pwm_value = 255;
+  if(PI_value < 50.0) pwm_value = 0;
+  else if(PI_value > 255.0) pwm_value = 255;
+  else pwm_value = (int) PI_value;
 
   analogWrite(pwm, pwm_value);
 }
@@ -85,7 +85,7 @@ void setup()          //set das variaveis
 
 void loop()
 {
-  setpoint = 5.0 + 25.0;//40.0*analogRead(pot)/1023.0;   
+  setpoint = 30.0 + 40.0*analogRead(pot)/1023.0;   
   // 
   distance_cm = readUltrasonicDistance();    //leitura do sensor
   height = cone_height - distance_cm;       //calculo da altura da agua
@@ -100,12 +100,12 @@ void loop()
   lcd.setBacklight(HIGH);          //lcd
 // 
   lcd.setCursor(0,0);
-  lcd.print("ERROR - ");
-  lcd.print(error, 2);
+  lcd.print("SETPOINT - ");
+  lcd.print(setpoint, 2);
 // 
   lcd.setCursor(0,1);
-  lcd.print("PI   - ");
-  lcd.print(PI_value, 2);
+  lcd.print("ALTURA   - ");
+  lcd.print(height, 2);
 // 
   Serial.print("Setpoint:" );         //serial print
   Serial.print(setpoint);
