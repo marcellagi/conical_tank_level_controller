@@ -22,7 +22,7 @@ float height;         // altura da agua
 float setpoint;       // altura para a agua se manter
 
 float error = 0.0, sum_error = 0.0;    //erro e somatorio do erro usado nas constantes de controle
-float kp = 12.0, ki = 0.3;              //constantes de controle
+float kp = 15.0, ki = 0.4;              //constantes de controle
 
 float dt = 0.1;             //delay
 
@@ -85,7 +85,7 @@ void setup()          //set das variaveis
 
 void loop()
 {
-  setpoint = 30.0 + 40.0*analogRead(pot)/1023.0;   
+  setpoint = 25.0 + 40.0*analogRead(pot)/1023.0;   
   // 
   distance_cm = readUltrasonicDistance();    //leitura do sensor
   height = cone_height - distance_cm;       //calculo da altura da agua
