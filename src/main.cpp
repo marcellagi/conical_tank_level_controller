@@ -107,22 +107,22 @@ void loop()
   lcd.print("ALTURA   - ");
   lcd.print(height, 2);
 // 
-  Serial.print("Setpoint:" );         //serial print
-  Serial.print(setpoint);
-  Serial.println(" cm");
+  // Serial.print("Setpoint:" );         //serial print
+  // Serial.print(setpoint);
+  // Serial.println(" cm");
   // 
-  Serial.print("Altura:" );
-  Serial.print(height);
-  Serial.println("cm");
+  //Serial.print("Altura:" );
+  //Serial.print(height);
+  //Serial.println("cm");
   // 
 // 
-  Serial.print("Erro:" );
-  Serial.println(error);
-  // 
-  Serial.print("Sum Erro:" );
-  Serial.println(sum_error);
-  // 
-  Serial.print("PI:" );
+  // Serial.print("Erro:" );
+  // Serial.println(error);
+  // // 
+  // Serial.print("Sum Erro:" );
+  // Serial.println(sum_error);
+  // // 
+  // Serial.print("PI:" );
   Serial.println(PI_value);
   // 
   Serial.println();
